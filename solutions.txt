@@ -1,0 +1,2 @@
+280
+W,W,N|W,N,N|S,S,W|E,E,S|E,E,N|E,N,N|N,E,E|W,S,S|N,N,W|E,E,S|S,W,W|E,N,N|W,W,S|N,W,W|W,S,S|N,E,E|W,W,N|S,S,W|E,S,S|E,E,S|S,S,W|E,E,N|W,S,S|N,W,W|E,E,N|S,S,W|N,E,E|W,W,N|N,N,E|W,N,N|N,W,W|E,S,S|N,N,E|N,E,E|E,E,S|W,S,S|N,E,E|S,S,W|S,W,W|N,N,W|W,S,S|N,W,W|S,S,E|S,E,E|N,E,E|E,S,S|E,E,N|N,N,W|N,W,W|E,E,N|S,S,E|S,S,W|S,W,W|E,N,N|N,N,E|W,W,S|E,S,S|E,E,N|S,S,W|W,W,N|N,N,E|N,W,W

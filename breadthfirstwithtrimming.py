@@ -61,7 +61,7 @@ def clean(paths):
 
 def create_next_paths():
     global finished_paths
-    n_paths = calculate_next_steps((4, 4), 0, [], base_elements.cleanVisited)
+    n_paths = calculate_next_steps((4, 4), 0, [], base_elements.clean_visited)
     clean_next = False
     for i in range(70):
         start_time = time.time()

@@ -9,7 +9,7 @@ S = (1, 0)
 W = (0, -1)
 
 # Utility copy of clean visited array
-cleanVisited = [  # (y,x)
+clean_visited = [  # (y,x)
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -22,17 +22,17 @@ cleanVisited = [  # (y,x)
 ]
 
 # Enumerate possible moves, rover moves like a knight in chess
-possibleMoves = {"NNE": [N, N, E], "NNW": [N, N, W], "NEE": [N, E, E], "NWW": [N, W, W],
+possible_moves = {"NNE": [N, N, E], "NNW": [N, N, W], "NEE": [N, E, E], "NWW": [N, W, W],
                  "ENN": [E, N, N], "ESS": [E, S, S], "EEN": [E, E, N], "EES": [E, E, S],
                  "SEE": [S, E, E], "SWW": [S, W, W], "SSE": [S, S, E], "SSW": [S, S, W],
                  "WSS": [W, S, S], "WNN": [W, N, N], "WWS": [W, W, S], "WWN": [W, W, N]}
 
-possibleFullMoves = {"NNE": (-2, 1), "NNW": (-2, -1), "NEE": (-1, 2), "NWW": (-1, -2),
+possible_full_moves = {"NNE": (-2, 1), "NNW": (-2, -1), "NEE": (-1, 2), "NWW": (-1, -2),
                      "ENN": (-2, 1), "ESS": (2, 1),   "EEN": (-1, 2), "EES": (1, 2),
                      "SEE": (1, 2),  "SWW": (1, -2),  "SSE": (2, 1),  "SSW": (2, -1),
                      "WSS": (2, -1), "WNN": (-2, -1), "WWS": (1, -2), "WWN": (-1, -2)}
 
-landingArea = [  # (y,x)
+landing_aread = [  # (y,x)
     ['X', 1 , 2 ,-1 , 4 , 1 , 4 , 2 ,-2],
     [-2 , 4 , 1 , 0 ,-2 ,-1 , 0 , 1 , 2],
     [ 1 , 2 ,-1 , 1 ,'X', 4 , 2 ,-1 , 1],
@@ -71,7 +71,7 @@ def take_step(position, step):
 
 
 def make_move(position, move_key):
-    move = possibleFullMoves[move_key]
+    move = possible_full_moves[move_key]
     new_position = (position[0] + move[0], position[1] + move[1])
     return new_position
 
@@ -98,7 +98,7 @@ def get_random_positive_move(moves):
 # Grid doesn't loop. Can't land on any squares with 'X'.
 def find_valid_moves(grid, current_pos, visited):
     valid_moves = {}
-    for key, move in possibleMoves.iteritems():
+    for key, move in possible_moves.iteritems():
         score = 0
         xy = current_pos
         valid = True
@@ -115,7 +115,7 @@ def find_valid_moves(grid, current_pos, visited):
                 valid = False
                 break
             else:
-                value = landingArea[xy[0]][xy[1]]
+                value = landing_aread[xy[0]][xy[1]]
                 if value != 'S':
                     score += value
             i = i + 1
@@ -125,12 +125,12 @@ def find_valid_moves(grid, current_pos, visited):
 
 
 def calculate_all_valid_moves_for_square():
-    valid_moves = copy.deepcopy(cleanVisited)
-    for columnIndex, column in enumerate(landingArea):
+    valid_moves = copy.deepcopy(clean_visited)
+    for columnIndex, column in enumerate(landing_aread):
         for rowIndex, row in enumerate(column):
-            if not landingArea[columnIndex][rowIndex] == 'X':
-                valid_moves[columnIndex][rowIndex] = find_valid_moves(landingArea, (columnIndex, rowIndex),
-                                                                      cleanVisited)
+            if not landing_aread[columnIndex][rowIndex] == 'X':
+                valid_moves[columnIndex][rowIndex] = find_valid_moves(landing_aread, (columnIndex, rowIndex),
+                                                                      clean_visited)
             else:
                 valid_moves[columnIndex][rowIndex] = []
 
